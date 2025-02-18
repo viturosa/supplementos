@@ -4,12 +4,14 @@ import { App } from './App.jsx'
 import { GlobalStyle } from './style/global.js'
 import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './style/theme/default.js'
+import { ToastContainer } from 'react-toastify'
 
 createRoot(document.getElementById('root')).render(
 	<StrictMode>
 		<App />
 		<ThemeProvider theme={defaultTheme}>
 			<GlobalStyle />
+			<ToastContainer />
 			<App />
 		</ThemeProvider>
 	</StrictMode>
