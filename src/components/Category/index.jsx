@@ -1,13 +1,15 @@
-import { CategoryContainer } from './style'
+import * as Style from './style'
+
 export function Category({ category }) {
-	const { title } = category
+	const { title, imageUrl } = category
+
 	return (
-		<CategoryContainer>
-			<div className="imagem-backgoud" />
-			<div className="category-body-container">
+		<Style.CategoryContainer>
+			<Style.ImageBackgroud style={{ backgroundImage: `url(${imageUrl})` }} />
+			<Style.CategoryContent>
 				<h2>{title}</h2>
 				<p>Comprar Agora</p>
-			</div>
-		</CategoryContainer>
+				</Style.CategoryContent>
+		</Style.CategoryContainer>
 	)
 }

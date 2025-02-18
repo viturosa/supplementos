@@ -1,4 +1,6 @@
 import { Category } from '../Category'
+import './style.css'
+
 const categories = [
 	{
 		id: 1,
@@ -29,6 +31,7 @@ const categories = [
 export function Categories() {
 	return (
 		<div>
+			<div className="container-home"/>
 			{categories.map((category) => {
 				return <Category category={category} key={category.title} />
 			})}
