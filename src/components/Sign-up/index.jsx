@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { FormInput } from '../UI/FormInput'
+import './style.css'
+
 const defaultFormFilds = {
 	name: '',
 	email: '',
@@ -25,6 +27,7 @@ export function SignUp() {
 	}
 	return (
 		<>
+		<div className='sign-up-container'>
 			<h2>Não possui conta?</h2>
 			<form onSubmit={handleSubmit}>
 				<FormInput
@@ -34,34 +37,38 @@ export function SignUp() {
 					value={name}
 					name="name"
 					onChange={handleChange}
-					className="input-custom"
+
 				/>
-				<input
+				<FormInput
+					label="Email"
 					type="email"
 					placeholder="Digite seu e-mail"
 					value={email}
 					name="email"
 					onChange={handleChange}
-					className="input-custom"
+
 				/>
-				<input
+				<FormInput
+					label="Senha"
 					type="password"
 					placeholder="Digite uma senha"
 					value={password}
 					name="password"
 					onChange={handleChange}
-					className="input-custom"
+
 				/>
-				<input
+				<FormInput
+					label="Confirme sua Senha"
 					type="password"
 					placeholder="Confirme sua senha"
 					value={confirmePassword}
 					name="confirmePassword"
-					className="input-custom"
 					onChange={handleChange}
 				/>
+
 				<button type="submit">Criar Conta</button>
 			</form>
+			</div>
 		</>
 	)
 }

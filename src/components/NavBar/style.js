@@ -18,3 +18,4 @@ export const LinksNavBar = styled.div`
 		cursor: pointer;
 	}
 `
+
