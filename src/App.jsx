@@ -1,17 +1,20 @@
 
 import { NavBar } from './components/NavBar'
-import { Categories } from './components/Categories'
 import { Auth } from './pages/auth'
-import { ItemListContainer } from './components/ItemListContainer'
+import { Route, Routes } from 'react-router-dom'
+import { Home } from './pages/home'
+import { Shopping } from'./pages/shopping'
 
 export function App() {
 	return (
-		<>
-			<NavBar />
-			<ItemListContainer />
-			<Auth />
-			{/* <Categories /> */}
-		</>
+		<Routes>
+			<Route path='/' element={<NavBar />}>
+			<Route index element={<Home />}/>
+			<Route path='auth' element={<Auth />} />
+			<Route path='shopping' element={<Shopping />} />
+
+			</Route>
+		</Routes>
 	)
 }
 

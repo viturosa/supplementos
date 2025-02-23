@@ -1,0 +1,10 @@
+.count-style {
+	display: flex;
+	padding: 5px;
+
+}
+
+button {
+	padding: 10px;
+	background-color: bisque;
+}

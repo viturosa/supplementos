@@ -1,23 +1,25 @@
 import * as Style from './style'
 import { CartWidget } from '../CartWidget'
 import { SupIcon } from '../SupIcon'
+import { Link, Outlet } from 'react-router-dom'
 
 export function NavBar() {
 	return (
 
 		<>
 			<Style.NavBar>
-				<Style.LinksNavBar>
-					<a>SUPPLEMENTOS</a>
+				<Style.LogoContainer to='/'>
+					<h2>SUPPLEMENTOS</h2>
 					<SupIcon />
-					<a>whey</a>
-					<a>vitaminas</a>
-					<a>creatinas</a>
+					</Style.LogoContainer>
+					<Style.LinksNavBar>
+					<Link to="shopping">SHOPPING</Link>
 				</Style.LinksNavBar>
 
 				<CartWidget />
-				<a>LOGIN</a>
+				<Link to='auth'>LOGIN</Link>
 			</Style.NavBar>
+			<Outlet />
 		</>
 
 	)
