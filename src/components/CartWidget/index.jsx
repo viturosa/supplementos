@@ -1,20 +1,18 @@
 import IMGLogo from './carticon.png'
-import { useState } from 'react'
+import { useCounter } from '../../context/CounterContext'
+import { count } from 'firebase/firestore'
 
 export function CartWidget() {
 
-	const qtStock = 12
+	const { count } = useCounter()
 
-	const [cartCount, setCartCount] = useState(0)
-	const updateCart = () => {
-		setCartCount(prevCont => prevCont + 1)
 	}
 	return (
 		<div>
 			<img src={IMGLogo}/>
-			<span>{cartCount}</span>
+			<span>{count}</span>
 
-			<button onClick={updateCart}>Adicionar Item</button>
+			<button>Adicionar Item</button>
 		</div>
 	)
-}
+

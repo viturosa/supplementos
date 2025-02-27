@@ -6,6 +6,8 @@ import { App } from './App.jsx'
 import { defaultTheme } from './style/theme/default.js'
 import { ToastContainer } from 'react-toastify'
 import { BrowserRouter } from 'react-router-dom'
+import { CounterProvider } from './context/CounterContext.jsx'
+
 
 createRoot(document.getElementById('root')).render(
 	<StrictMode>
@@ -14,6 +16,9 @@ createRoot(document.getElementById('root')).render(
 			<GlobalStyle />
 			<ToastContainer />
 			<App />
+			<CounterProvider>
+					<App />
+				</CounterProvider>
 		</ThemeProvider>
 		</BrowserRouter>
 

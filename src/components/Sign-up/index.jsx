@@ -2,6 +2,10 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { FormInput } from '../UI/FormInput'
 import './style.css'
+import {
+	createAuthUserWithEmailPassword,
+	createUserDocumentFromAuth
+} from '../../utils/firebase'
 
 const defaultFormFilds = {
 	name: '',
@@ -16,14 +20,23 @@ export function SignUp() {
 		const { name, value } = event.target
 		setFormFilds({ ...formFilds, [name]: value })
 	}
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault()
 		if (password !== confirmePassword) {
 			toast.warn('Senha não são iguais!')
 			return
 		}
-		console.log(formFilds)
-		setFormFilds(defaultFormFilds)
+		try {
+			const { user } = await createAuthUserWithEmailPassword(email, password)
+			await createUserDocumentFromAuth(user, { name })
+			toast.success('Usuário cadastrado com sucesso!')
+			setFormFilds(defaultFormFilds)
+		} catch (error) {
+
+			if (error.code === 'auth/email-already-in-use') {
+				toast.error('E-mail já cadastrado')
+			}
+		}
 	}
 	return (
 		<>
