@@ -14,8 +14,10 @@ import {
 	createUserWithEmailAndPassword,
 	getAuth,
 	GoogleAuthProvider,
+	onAuthStateChanged,
 	signInWithEmailAndPassword,
-	signInWithPopup
+	signInWithPopup,
+	signOut
 } from 'firebase/auth'
 
 const firebaseConfig = {
@@ -86,7 +88,7 @@ export const createUserDocumentFromAuth = async (userAuth, info = {}) => {
 				...info
 			})
 		} catch (e) {
-			console.log(e.message)
+			console.error(e.message)
 		}
 	}
 
@@ -100,3 +102,10 @@ export const signInAuthUserWithEmailPassoword = async (email, password) => {
 }
 
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
+
+export const singOutAuthUser = async () => {
+	await signOut(auth)
+}
+
+export const onAuthStateChangeListener = (callback) =>
+	onAuthStateChanged(auth, callback)

@@ -1,8 +1,15 @@
-export function CategoriesPreview({ title, products }) {
+import { useContext } from 'react'
+ import { CategoriesContext } from '../../context/categoriesContext'
+ import { CategoryPreview } from '../CategoryPreview'
+
+ export function CategoriesPreview() {
+ 	const { categoriesMap } = useContext(CategoriesContext)
 	return (
-		<div>
-			<h2>{title}</h2>
-			<div></div>
-		</div>
-	)
+	<>
+	 {Object.keys(categoriesMap).map((title) => {
+		 const products = categoriesMap[title]
+		 return <CategoryPreview key={title} title={title} products={products} />
+	 })}
+ </>
+)
 }

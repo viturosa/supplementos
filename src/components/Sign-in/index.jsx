@@ -5,6 +5,7 @@ import {
 	signInAuthUserWithEmailPassoword,
 	signInWithGooglePopup
 } from '../../utils/firebase'
+import { toast } from 'react-toastify'
 
 const defaultFormFields = {
 	email:'',
@@ -27,10 +28,12 @@ export function SignIn() {
 	const handleSubmit = async (event) => {
 		event.preventDefault()
 		try {
-			const { user } = await signInAuthUserWithEmailPassoword(email, password)
-			console.log(user)
+			await signInAuthUserWithEmailPassoword(email, password)
+ 			toast.success('Login efetuado com sucesso!')
 		} catch (error) {
-			console.log(error)
+			if (error.code === 'auth/invalid-credential') {
+				toast.error('E-mail ou senha invalidos')
+			}
 		}
 		resetFormFields()
 	}
