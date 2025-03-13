@@ -10,7 +10,7 @@ import { createContext, useEffect, useState } from 'react'
 
  	useEffect(() => {
  		const getCategories = async () => {
- 			console.log('Estou aqui')
+
  			const categoryMap = await getCategoriesCollection()
  			setCategoriesMap(categoryMap)
  		}

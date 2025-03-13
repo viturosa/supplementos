@@ -12,7 +12,7 @@ export function App() {
 			<Route path='/' element={<NavBar  />} >
 			<Route index element={<Home />}/>
 			<Route path='auth' element={<Auth />} />
-			<Route path='shopping' element={<Shopping />} />
+			<Route path='shopping/*' element={<Shopping />} />
 
 			</Route>
 		</Routes>
